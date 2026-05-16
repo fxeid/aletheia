@@ -1,9 +1,6 @@
 # --- Cleanup quarantine (review-and-delete; not for git) ---
 .cleanup_quarantine/
 
-# --- Large embeddings (host on GitHub Release or HF) ---
-data/embeddings.npy
-
 # --- Python build / cache ---
 __pycache__/
 *.pyc
