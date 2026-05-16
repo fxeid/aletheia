@@ -1,0 +1,35 @@
+# Aletheia: Medical QA RAG (CSCI E-222 final project)
+# Locked stack per report Section 4.1 and Section 4.5.
+#
+# Install with:
+#   pip install -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cu130
+#
+# The --extra-index-url is required on the GB10 (aarch64, CUDA 13.0) so pip pulls
+# the cu130 wheel for torch. Using --index-url alone fails because cuda-bindings==13.0.3
+# is not currently published in the cu130 index (PyTorch issue #172926).
+
+# Deep learning + GPU
+torch                              # pulled from cu130 wheel index, version follows wheel availability
+accelerate                         # required by from_pretrained for BF16 / device placement
+
+# HuggingFace stack (pinned to v4 API per report Section 4.5)
+transformers>=4.46,<5.0
+datasets>=3.0,<5.0
+
+# Vector index (manylinux_x86_64 + aarch64 wheels both published as 1.13.2)
+faiss-cpu==1.13.2
+
+# Chunking
+langchain-text-splitters
+
+# Evaluation
+rouge-score
+bert-score
+
+# Plotting and data handling (used in Sections 2.4, 8.5, 9)
+matplotlib
+pandas
+numpy
+
+# Colab free-tier only (uncomment for T4 path, Section 4.5)
+# bitsandbytes

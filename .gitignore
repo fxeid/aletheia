@@ -1,0 +1,55 @@
+# --- Cleanup quarantine (review-and-delete; not for git) ---
+.cleanup_quarantine/
+
+# --- Large embeddings (host on GitHub Release or HF) ---
+data/embeddings.npy
+
+# --- Python build / cache ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.ipynb_checkpoints/
+
+# --- Virtualenvs ---
+venv/
+.venv/
+env/
+.env/
+
+# --- HF / model caches ---
+.cache/
+.huggingface/
+transformers_cache/
+hf_cache/
+
+# --- Model weights (host separately if you add any) ---
+*.safetensors
+pytorch_model*.bin
+*.pt
+*.pth
+
+# --- IDE / editor ---
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# --- OS junk ---
+.DS_Store
+._*
+Thumbs.db
+
+# --- Logs ---
+*.log
+nohup.out
+
+# --- OPTIONAL: regenerable HF Datasets caches (~75 MB) ---
+# Uncomment if you want a smaller repo; the notebook regenerates these
+# via save_to_disk from lavita/MedQuAD.
+# data/medquad_corpus_source/
+# data/medquad_chunks/
+# data/split_train_pool/
+# data/split_test/
+# data/split_val/
