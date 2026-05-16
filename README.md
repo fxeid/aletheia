@@ -5,7 +5,7 @@ Author: Fady A Eid.
 
 A retrieval-augmented question-answering pipeline over MedQuAD (16,406 NIH medical Q&A pairs). MedCPT bi-encoder retrieves the top-3 passages per question; BioMistral-7B-SLERP generates the answer under greedy decoding. Evaluated with Top-k Accuracy, MRR, ROUGE-L F1, and BERTScore F1, plus a 50-question RAG-vs-no-RAG ablation.
 
-See `aletheia_report.pdf` for the full write-up, methods, results, and references. The video walkthrough URL is on the report cover and on the last slide.
+See `aletheia_report.pdf` for the full write-up, methods, results, and references. The video walkthrough URL is on the report cover.
 
 ## Environment
 
@@ -45,7 +45,7 @@ The embedding step (Section 5 of the notebook) produces a 63 MB `embeddings.npy`
    ```
 3. Run the rest of the notebook normally.
 
-Pre-computed embeddings download: [URL added after GitHub Release upload]
+Pre-computed embeddings download: https://github.com/fxeid/aletheia/raw/main/data/embeddings.npy
 
 ## Reproducing the experiment
 
@@ -56,20 +56,26 @@ Pre-computed embeddings download: [URL added after GitHub Release upload]
 
 All seeds are fixed (`SEED = 42`) and `torch.use_deterministic_algorithms(True)` is set, so retrieval and generation are bit-exact reproducible on the same hardware.
 
-## Submission package contents (this ZIP)
+## Submission package contents
+
+This project is delivered in two places: a ZIP uploaded to Canvas and this public GitHub repository (`fxeid/aletheia`). Both contain the same files:
 
 - `aletheia.ipynb`: the main notebook (entry point).
 - `requirements.txt`: versioned dependencies (this file's neighbor).
 - `README.md`: this file.
 - `data/medquad_sample_200.csv`: 200-row sample of MedQuAD for inspection.
+- `aletheia_report.pdf`: full project report.
 
-Not included (sizes exceed the 10 MB Canvas limit, hosted externally):
+Hosted in this GitHub repo but NOT in the Canvas ZIP (size limits):
 
-- `embeddings.npy` (63 MB): see the pre-computed embeddings link above.
-- BioMistral-7B-SLERP weights (14.48 GB): downloaded by the notebook from Hugging Face on first run.
-- Full MedQuAD (handled by `load_dataset` at runtime).
+- `data/embeddings.npy` (63 MB): in the repo at `data/embeddings.npy`. Direct download link in the "Pre-computed embeddings" section above.
 
-The report and slides are uploaded as separate files alongside this ZIP per the rubric.
+Downloaded on first run, not stored anywhere in this repo:
+
+- BioMistral-7B-SLERP weights (14.48 GB): pulled by the notebook from Hugging Face.
+- Full MedQuAD: pulled by `load_dataset` at runtime.
+
+The slides PDF and video URL are uploaded separately to Canvas per the rubric.
 
 ## Citation
 

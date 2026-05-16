@@ -1,12 +1,13 @@
 # Aletheia: Medical QA RAG (CSCI E-222 final project)
-# Locked stack per report Section 4.1 and Section 4.5.
+# Versioned dependencies per report Section 4.1 and Section 4.5.
 #
 # Install with:
 #   pip install -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cu130
 #
-# The --extra-index-url is required on the GB10 (aarch64, CUDA 13.0) so pip pulls
-# the cu130 wheel for torch. Using --index-url alone fails because cuda-bindings==13.0.3
-# is not currently published in the cu130 index (PyTorch issue #172926).
+# --extra-index-url (not --index-url) lets pip pull torch from the CUDA 13.0
+# wheel index while resolving every other dependency from PyPI. This is the
+# safer pattern: using --index-url alone makes pip search only the cu130 index,
+# which historically has missed packages mirrored on PyPI.
 
 # Deep learning + GPU
 torch                              # pulled from cu130 wheel index, version follows wheel availability
