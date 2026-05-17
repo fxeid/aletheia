@@ -29,7 +29,7 @@ The `--extra-index-url` flag tells pip to fall back to PyPI for non-cu130 packag
 
 The notebook loads MedQuAD from the Hugging Face `lavita/MedQuAD` mirror via `load_dataset` (handled in Section 2.1, no manual download needed). No separate download step is required.
 
-A 200-row sample is included in `data/medquad_sample_200.csv` for quick inspection without triggering the full HF download.
+A 200-row sample of MedQuAD ships pre-generated at `data/medquad_sample_200.csv` for quick inspection without triggering the full HF download. The sample was created by a stratified one-off sampler over the full 16,406-row corpus with `random_state=42`, preserving the original `question_type` class proportions across all 15 classes (for example: 27.5% `information` and 16.5% `symptoms` in the sample, matching the corpus). The CSV preserves the full 13-column MedQuAD schema, and the `question_type` column holds the human-readable string label (for example `treatment`), not the integer code used internally by the stratified-split step in Section 2 of the notebook.
 
 ## Pre-computed embeddings (optional, saves ~8 minutes)
 
@@ -58,24 +58,24 @@ All seeds are fixed (`SEED = 42`) and `torch.use_deterministic_algorithms(True)`
 
 ## Submission package contents
 
-This project is delivered in two places: a ZIP uploaded to Canvas and this public GitHub repository (`fxeid/aletheia`). Both contain the same files:
+This project is delivered to Canvas as four uploads per the rubric: the report PDF (standalone), the slides PDF (standalone), the video URL (on the last slide and report cover), and a ZIP containing the code.
+
+**ZIP contents (≤10 MB):**
 
 - `aletheia.ipynb`: the main notebook (entry point).
-- `requirements.txt`: versioned dependencies (this file's neighbor).
+- `requirements.txt`: versioned dependencies.
 - `README.md`: this file.
 - `data/medquad_sample_200.csv`: 200-row sample of MedQuAD for inspection.
-- `aletheia_report.pdf`: full project report.
 
-Hosted in this GitHub repo but NOT in the Canvas ZIP (size limits):
+**Available on GitHub (`fxeid/aletheia`) but not in the ZIP:**
 
-- `data/embeddings.npy` (63 MB): in the repo at `data/embeddings.npy`. Direct download link in the "Pre-computed embeddings" section above.
+- `data/embeddings.npy` (63 MB): direct download link in the "Pre-computed embeddings" section above.
+- `aletheia_report.pdf`: full project report (also uploaded to Canvas as a standalone file).
 
-Downloaded on first run, not stored anywhere in this repo:
+**Downloaded on first run, not stored anywhere in this repo:**
 
 - BioMistral-7B-SLERP weights (14.48 GB): pulled by the notebook from Hugging Face.
 - Full MedQuAD: pulled by `load_dataset` at runtime.
-
-The slides PDF and video URL are uploaded separately to Canvas per the rubric.
 
 ## Citation
 
